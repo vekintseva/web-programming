@@ -11,8 +11,6 @@
 
             });
         });
-
         observer.observe({ type: "navigation", buffered: true });
-
     });
 })();
