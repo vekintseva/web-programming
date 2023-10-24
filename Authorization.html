@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="stylesheet.css">
+    <meta charset="UTF-8">
+    <title>Авторизация</title>
+    <link rel="short icon" href="img/1.png" type="image/png">
+
+</head>
+<body>
+<header>
+    <div class="brand">
+        <img src="img/v.png"  width="80px" alt="logo1">
+        <img src="img/e.png"  width="80px" alt="logo2">
+        <img src="img/t.png"  width="80px" alt="logo3">
+        <img src="img/i.png"  width="80px" alt="logo4">
+        <img src="img/m.png"  width="80px" alt="logo5">
+    </div>
+    <h3 class="info">Наша компания решает любые задачи клиента по модернизации энергитической системы судов.
+        Выполняем работы под ключ. Являемся дистрибьютерами лидера мирового двигаетелестроениея Weichi</h3>
+
+    <blockquote class="quote" cite="https://t.me/@AlexVek"><q>Мы гарантируем качество</q>
+    </blockquote>
+
+    <nav class="navigation">
+        <ul>
+            <li>
+                <a href="index.html" >
+                    <b>Вернуться на главный кран</b>
+                </a>
+            </li>
+            <li>
+                <a href="Services.html">
+                    <b>Услуги</b>
+                </a>
+            </li>
+            <li>
+                <a href="Catalog.html">
+                    <b>Каталог товаров</b>
+                </a>
+            </li>
+            <li>
+                <a href="#contacts">
+                    <b>Контакты</b>
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+</header>
+
+<main>
+    <!-- Кнопка для открытия модального -->
+    <button onclick="document.getElementById('id01').style.display='block'">Регистрация</button>
+
+    <!-- Модальная форма регистрации-->
+    <div id="id01" class="modal">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Закрыть модальный"></span>
+        <form class="modal-content" action="/action_page.php">
+            <div class="container">
+                <h1>Форма регистрации</h1>
+                <p>Для создания учетной записи необходимо заполнить форму ниже</p>
+                <hr>
+                <label for="email"><b>Email</b></label>
+                <input type="text" placeholder="Введите вашу почту" name="email" required>
+
+                <label for="psw"><b>Пароль</b></label>
+                <input type="password" placeholder="Введите пароль" name="psw" required>
+
+                <label for="psw-repeat"><b>Повторить пароль</b></label>
+                <input type="password" placeholder="Повторите пароль" name="psw-repeat" required>
+
+                <label>
+                    <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Запомнить меня
+                </label>
+
+                <p>Создавая учетную запись, вы соглашаетесь с нашими <a href="#" style="color:dodgerblue">Условиями конфиденциальности</a>.</p>
+
+                <div class="clearfix">
+                    <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Отменить</button>
+                    <button type="submit" class="signup">Регистрация</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</main>
+
+<footer>
+    <div class="contacts" id="contacts">
+        <div>
+            <img src="img/5.png" width="100px" alt="phone">
+            <p><strong>Векинцева Виктория</strong></p>
+            <p><i>телефон 89098362222</i></p>
+        </div>
+        <div>
+            <img src="img/4.png" width="100px" alt="location">
+            <p><strong>Адрес</strong></p>
+            <p>город Петропавловск-Камчатский</p>
+        </div>
+        <div>
+            <img src="img/6.png" width="100px" alt="tg">
+            <p><a target="_blank" href="https://t.me/@viktoria_vekintseva"><ins>telegram</ins></a></p>
+        </div>
+    </div>
+    <div id="load_page"></div>
+</footer>
+
+</body>
+</html>

@@ -2,9 +2,14 @@
 <html lang="ru">
 <head>
     <link rel="stylesheet" href="stylesheet.css">
+    <script src="js/script.js"></script>
     <meta charset="UTF-8">
     <title>Vetim company</title>
     <link rel="short icon" href="img/1.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="MobileOptimized" content="320" />
+<!--ширина страницы в соответствии с размером экрана-->
+    <meta name="MobileOptimized" content="width" />
 </head>
 
 <body>
@@ -27,22 +32,27 @@
     <ul>
 
             <li>
-                <a href="#">
+                <a href="Services.html" target="_blank">
                     <b>Услуги</b>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="Catalog.html" target="_blank">
                     <b>Каталог товаров</b>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a class="active" href="index.html">
+                    <b>Главный экран</b>
+                </a>
+            </li>
+            <li>
+                <a href="Authorization.html" target="_blank">
                 <b>Личный кабинет</b>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="#contacts">
                 <b>Контакты</b>
                 </a>
             </li>
@@ -94,26 +104,27 @@
         <li><strong>Услуги по резке и раскрою металла</strong> </li>
     </ul>
 
+
 </main>
 
 <footer>
-    <div class="contacts">
-
+    <div class="contacts" id="contacts">
         <div>
        <img src="img/5.png" width="100px" alt="phone">
-            <div><strong>Векинцева Виктория</strong></div>
-        <div><i>телефон 89098362222</i></div>
+            <p><strong>Векинцева Виктория</strong></p>
+        <p><i>телефон 89098362222</i></p>
         </div>
         <div>
             <img src="img/4.png" width="100px" alt="location">
-            <div><strong>Адрес</strong></div>
-            <div>город Петропавловск-Камчатский</div>
+            <p><strong>Адрес</strong></p>
+            <p>город Петропавловск-Камчатский</p>
         </div>
         <div>
             <img src="img/6.png" width="100px" alt="tg">
-            <a target="_blank" href="https://t.me/@viktoria_vekintseva"><h2><ins>telegram</ins></h2></a>
+            <p><a target="_blank" href="https://t.me/@viktoria_vekintseva"><ins>telegram</ins></a></p>
         </div>
     </div>
+    <div id="load_page"></div>
 </footer>
 
 </body>
