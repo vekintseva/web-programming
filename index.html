@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="stylesheet.css">
     <script src="js/script.js"></script>
+    <script src="js/nav.js"></script>
     <meta charset="UTF-8">
     <title>Vetim company</title>
     <link rel="short icon" href="img/1.png" type="image/png">
@@ -42,7 +43,7 @@
                 </a>
             </li>
             <li>
-                <a class="active" href="index.html">
+                <a class="#" href="index.html">
                     <b>Главный экран</b>
                 </a>
             </li>
@@ -126,6 +127,11 @@
     </div>
     <div id="load_page"></div>
 </footer>
+
+    <script>
+        const menu = document.getElementById('menu-fav');
+        menu.classList.toggle('menu-active');
+    </script>
 
 </body>
 </html>
