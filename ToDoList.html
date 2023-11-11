@@ -2,14 +2,19 @@
 <html lang="ru">
 <head>
     <link rel="stylesheet" href="stylesheet.css">
-    <script src="js/nav.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/nav.js"></script>
+    <script src="js/todoList.js"></script>
     <meta charset="UTF-8">
-    <title>Каталог товаров</title>
+    <title>Vetim company</title>
     <link rel="short icon" href="img/1.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="MobileOptimized" content="320" />
+    <!--ширина страницы в соответствии с размером экрана-->
+    <meta name="MobileOptimized" content="width" />
 </head>
-<body>
 
+<body>
 <header>
     <div class="brand">
         <img src="img/v.png"  width="80px" alt="logo1">
@@ -27,23 +32,13 @@
     <nav class="navigation">
         <ul>
             <li>
-                <a href="index.html">
+                <a href="index.html" >
                     <b>Вернуться на главный экран</b>
                 </a>
             </li>
             <li>
-                <a href="Services.html" target>
-                    <b>Услуги</b>
-                </a>
-            </li>
-            <li>
-                <a href="Catalog.html">
-                    <b>Каталог товаров</b>
-                </a>
-            </li>
-            <li>
-                <a href="Authorization.html">
-                    <b>Личный кабинет</b>
+                <a href="ToDoList.html">
+                    <b>To do list</b>
                 </a>
             </li>
             <li>
@@ -52,61 +47,24 @@
                 </a>
             </li>
         </ul>
-
     </nav>
 </header>
 
 <main>
-    <h1>Каталог деталей, предоставляемых нашей фирмой и сроки их изготовления</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Наименование товара</th>
-        <th>Сроки изготовления, дн</th>
-        <th>Каталожный номер</th>
-        <th>Область применения</th>
-        <th>Цена за штуку, руб</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td>Поршень</td>
-        <td>3</td>
-        <td>f536g</td>
-        <td>Детали движения</td>
-        <td>от 567</td>
-    </tr>
-    <tr>
-        <td>Втулка циллиндров</td>
-        <td>12</td>
-        <td>jdk78h</td>
-        <td>Блок двигателя</td>
-        <td>от 23904</td>
-    </tr>
-    <tr>
-        <td>Распределительный вал</td>
-        <td>в зависимости от размеров</td>
-        <td>fg3390n</td>
-        <td>ГРМ</td>
-        <td>от 4700</td>
-    </tr>
-    <tr>
-        <td>Толкатели</td>
-        <td>в зависимости от размеров</td>
-        <td>fg3390n</td>
-        <td>ГРМ</td>
-        <td>от 4000</td>
-    </tr>
-    <tr>
-        <td>Шатун</td>
-        <td>4</td>
-        <td>gwo90n</td>
-        <td>Детали движения</td>
-        <td>от 1448</td>
-    </tr>
 
-    </tbody>
-</table>
+    <form id="todoForm" class="todo">
+        <div id="myDIV" class="header">
+            <h1>Todo list</h1>
+            <input type="text" id="myInput" placeholder="Запиши свое дело">
+            <span class="addBtn">Добавить</span>
+            <button id="clearButton">Очистить список</button>
+
+        </div>
+
+        <ul id="myUL">
+        </ul>
+    </form>
+
 </main>
 
 <footer>
@@ -128,6 +86,6 @@
     </div>
     <div id="load_page"></div>
 </footer>
-
 </body>
+
 </html>

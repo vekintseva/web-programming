@@ -1,13 +1,19 @@
-const pageToLinkMap = {
-    // const links = document.querySelector
+(function () {
 
-};
+    // console.log("проверка добавления")
 
-const currentPage = window.location.href; // url адрес текущей страницы
-for (const page in pageToLinkMap) {
-    if (currentPage.includes(page))
-    {
-        document.getElementById(pageToLinkMap[page]).className = "nav-active";
-        break;  // выход из цикла, как только найдена соответствующая страница
-    }
-}
+    document.addEventListener("DOMContentLoaded",()=>{
+        // console.log("Загружена стр")
+        console.log(window.location.href)
+        const links = document.querySelectorAll('.navigation ul li a')
+        for (let link of links) {
+            console.log(link.href)
+            if (link.href === window.location.href){
+                link.classList.add("nav-active")
+            }
+        }
+    });
+
+})();
+
+
