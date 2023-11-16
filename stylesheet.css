@@ -508,4 +508,29 @@ hr {
 
 }
 
+.swiper {
+    width: 65%;
+    height: 100%;
+}
 
+.swiper-slide{
+    text-align: center;
+    margin-top: 25px;
+    font-size: 18px;
+}
+
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: #fff;
+    background-color: #000;
+    border-radius: 50%;
+    padding: 10px;
+    margin: 0 10px;
+    transition: background-color 0.3s ease; /* Добавим анимацию для плавного изменения цвета при наведении */
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background-color: #555; /* Цвет фона при наведении */
+}

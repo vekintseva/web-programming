@@ -1,126 +1,121 @@
-// попробовать с template (разметка для шаблона, со стороны скрипта клонирование шаблона и вставку 37-44)
-//
-// Задание: Обработайте событие отправки формы (нужно перехватить событие onSubmit) и без перезагрузки страницы отобразите результат генерации
-//Сделайте возможность сохранения и загрузки введенных пользователем параметров в локальное хранилище браузера пользователя (то есть localStorage)
 document.addEventListener('DOMContentLoaded', function () {
-    var form = document.querySelector('.todo');
-    var inputField = document.getElementById('myInput');
-    var todoList = document.getElementById('myUL');
-    var addButton = document.querySelector('.addBtn');
+    const form = document.querySelector('.todo');
+    const inputField = document.getElementById('myInput');
+    const todoList = document.getElementById('myUL');
+    const addButton = document.querySelector('.addBtn');
 
-    //Добавляем обработчик события отправки формы
+    function newElement() {
+    }
+
     document.getElementById('todoForm').addEventListener('submit', function (event) {
-        event.preventDefault(); // Предотвращаем перезагрузку страницы
+        event.preventDefault();
         newElement();
     });
 
-    // Предотвращаем добавление события через кнопку "Enter"
     inputField.addEventListener('keydown', function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
         }
     });
 
-    // Добавляем событие добавления через кнопку "Добавить"
     addButton.addEventListener('click', function (event) {
+        let inputData
+        let todos = []
+
         if (inputField.value === '') {
             alert("Ты не придумал себе дело, поэтому его никак не добавить");
             inputData = "отдых:)"
         } else {
-            inputData = inputField.value; // Получаем данные из поля ввода
+            inputData = inputField.value;
         }
 
-        // можно выполнить генерацию результата
-        var generatedResult = "Добавлено новое дело: " + inputData;
-
-        // Отобразим результат на странице
-        var newListElement = document.createElement('li');
+        const newListElement = document.createElement('li');
         newListElement.textContent = inputData;
 
-        // Создаем кнопку "Закрыть" и добавляем ее к новому элементу списка
-        var span = document.createElement('SPAN');
-        var txt = document.createTextNode("\u00D7");
+        const span = document.createElement('SPAN');
+        const txt = document.createTextNode("\u00D7");
         span.className = "close";
         span.appendChild(txt);
         newListElement.appendChild(span);
 
-        // Добавляем новый элемент списка в "todoList"
         todoList.appendChild(newListElement);
-        inputField.value = ""; // Очистим поле ввода
 
-        // Сохраняем введенные данные в локальное хранилище браузера
-        if (localStorage.getItem('todos') === null) {
-            var todos = [];
-        } else {
-            var todos = JSON.parse(localStorage.getItem('todos'));
+        inputField.value = "";
+
+        if ("todos" in localStorage) {
+            todos = JSON.parse(localStorage.getItem('todos'));
         }
 
-        todos.push(inputData);
+        todos.push({name: inputData, isChecked: false});
         localStorage.setItem('todos', JSON.stringify(todos));
 
-        // Добавляем обработчик события "клик" к кнопке "Закрыть" для нового элемента списка
         span.addEventListener('click', function () {
-            var div = this.parentElement;
+            console.log("DELETE action")
+            const div = this.parentElement;
             div.style.display = "none";
-
-            // Удаляем удаленный элемент из локального хранилища
-            var savedTodos = JSON.parse(localStorage.getItem('todos')) || []; // Получаем массив из локального хранилища
-            var dataIndex = savedTodos.indexOf(div.textContent);
-            if (dataIndex > -1) {
-                savedTodos.splice(dataIndex, 1);
-                localStorage.setItem('todos', JSON.stringify(savedTodos)); // Обновляем локальное хранилище
+            const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+            console.log(`savedTodos before   = ${JSON.parse(localStorage.getItem('todos'))}`)
+            console.log(`savedTodos = ${savedTodos}`)
+            const clickedTodoName = div.textContent.replace('×', '');
+            console.log(`clickedTodoName = ${clickedTodoName}`)
+            let todoClicked = savedTodos.find(todo => todo.name === clickedTodoName)
+            console.log("todoClicked=", todoClicked)
+            if (todoClicked) {
+                localStorage.setItem('todos', JSON.stringify(savedTodos.filter((todo) => todo.name !== clickedTodoName)));
             }
         });
+
     });
 
-    // Добавляем обработчик события "клик" для элементов списка чтобы переключать состояние "checked"
     todoList.addEventListener('click', function (event) {
         if (event.target.tagName === 'LI') {
-            event.target.classList.toggle('checked'); // Переключаем класс "checked"
+            event.target.classList.toggle('checked');
 
-            // Обновляем состояние в локальном хранилище
-            var savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
-            var clickedTodo = event.target.textContent;
-            var index = savedTodos.indexOf(clickedTodo);
-            if (index > -1) {
-                savedTodos[index] = savedTodos[index].replace(/^\[x\]/, "") || "[x]" + savedTodos[index]; // добавить или убрать [x] в зависимости от наличия класса
-                localStorage.setItem('todos', JSON.stringify(savedTodos)); // Обновляем локальное хранилище
+            const savedTodos = JSON.parse(localStorage.getItem('todos')) || [];
+            const clickedTodoName = event.target.textContent.replace('×', '');
+            console.log("clickedTodoName=", clickedTodoName)
+            let todoClicked = savedTodos.find(todo => todo.name === clickedTodoName)
+            console.log("todoClicked=", todoClicked)
+            if (todoClicked) {
+                todoClicked.isChecked = !todoClicked.isChecked
+                //savedTodos[index] = savedTodos[index].replace(/^[x]/, "")  "[x]" + savedTodos[index];
+                localStorage.setItem('todos', JSON.stringify(savedTodos))
             }
         }
     });
 
-    // Загружаем сохраненные данные из локального хранилища при загрузке страницы
     if (localStorage.getItem('todos') !== null) {
-        var savedTodos = JSON.parse(localStorage.getItem('todos'));
+        const savedTodos = JSON.parse(localStorage.getItem('todos'));
         savedTodos.forEach(function (todo) {
-            var newListElement = document.createElement('li');
-            newListElement.textContent = todo;
+            const newListElement = document.createElement('li');
+            newListElement.textContent = todo.name;
 
-            // Проверяем, сохранен ли статус "checked" в локальном хранилище
-            if (todo.startsWith("[x]")) {
-                newListElement.classList.add('checked'); // Добавляем класс "checked"
+            console.log("todo", todo)
+            if (todo.isChecked) {
+                newListElement.classList.add('checked');
             }
 
 
-            // Создаем кнопку "Закрыть" и добавляем ее к сохраненному элементу списка
-            var span = document.createElement('SPAN');
-            var txt = document.createTextNode("\u00D7");
+            const span = document.createElement('SPAN');
+            const txt = document.createTextNode("\u00D7");
             span.className = "close";
             span.appendChild(txt);
             newListElement.appendChild(span);
 
             todoList.appendChild(newListElement);
 
-            // Добавляем обработчик события "клик" к кнопке "Закрыть" сохраненного элемента
+
             span.addEventListener('click', function () {
-                var div = this.parentElement;
+                let div = this.parentElement;
                 div.style.display = "none";
 
-                // Удаляем удаленный элемент из локального хранилища
-                var dataIndex = savedTodos.indexOf(div.textContent);
-                if (dataIndex > -1) {
-                    savedTodos.splice(dataIndex, 1);
-                    localStorage.setItem('todos', JSON.stringify(savedTodos));
+
+                const clickedTodoName = div.textContent.replace('×', '');
+                console.log(`clickedTodoName = ${clickedTodoName}`)
+                let todoClicked = savedTodos.find(todo => todo.name === clickedTodoName)
+                console.log("todoClicked=", todoClicked)
+                if (todoClicked) {
+                    localStorage.setItem('todos', JSON.stringify(savedTodos.filter((todo) => todo.name !== clickedTodoName)));
                 }
             });
 
@@ -128,12 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Добавляем обработчик события для кнопки "очистить список"
     document.getElementById('clearButton').addEventListener('click', function () {
-        // Очищаем локальное хранилище
         localStorage.removeItem('todos');
-        // Очищаем массив savedTodos (если он у вас есть)
-        savedTodos = [];
     });
 
 });
