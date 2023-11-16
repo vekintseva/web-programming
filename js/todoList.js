@@ -1,5 +1,5 @@
-//Очистка локального хранилища - можно сделать напрямую в браузере через консоль:    localStorage.clear();
-
+// попробовать с template (разметка для шаблона, со стороны скрипта клонирование шаблона и вставку 37-44)
+//
 // Задание: Обработайте событие отправки формы (нужно перехватить событие onSubmit) и без перезагрузки страницы отобразите результат генерации
 //Сделайте возможность сохранения и загрузки введенных пользователем параметров в локальное хранилище браузера пользователя (то есть localStorage)
 document.addEventListener('DOMContentLoaded', function () {
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
 
         // можно выполнить генерацию результата
-        // var generatedResult = "Добавлено новое дело: " + inputData;
+        var generatedResult = "Добавлено новое дело: " + inputData;
 
         // Отобразим результат на странице
         var newListElement = document.createElement('li');
@@ -137,4 +137,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 });
-
