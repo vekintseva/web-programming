@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <link rel="stylesheet" href="stylesheet.css">
     <script src="js/nav.js"></script>
     <script src="js/script.js"></script>
+    <script src="js/swiper.js"></script>
+    <script src="/mousetrap.min.js"></script>
+    <script src="js/mousetrap.js"></script>
     <meta charset="UTF-8">
     <title>Каталог товаров</title>
     <link rel="short icon" href="img/1.png" type="image/png">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<!--    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" type="text/javascript"></script>-->
+
+<!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>-->
+<!--    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>-->
+    <link rel="stylesheet" href="stylesheet.css">
+
 </head>
 <body>
 
@@ -107,6 +116,24 @@
 
     </tbody>
 </table>
+
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="img/v.png" width="200"  alt="logo1"></div>
+            <div class="swiper-slide"><img src="img/e.png"  width="200" alt="logo2"></div>
+            <div class="swiper-slide"><img src="img/t.png"  width="200" alt="logo3"></div>
+            <div class="swiper-slide"><img src="img/i.png"  width="200" alt="logo4"></div>
+            <div class="swiper-slide"><img src="img/m.png"  width="200" alt="logo5"></div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script defer src="js/swiper.js" type="text/javascript"></script>
+
+
 </main>
 
 <footer>

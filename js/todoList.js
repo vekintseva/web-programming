@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log("todoClicked=", todoClicked)
             if (todoClicked) {
                 todoClicked.isChecked = !todoClicked.isChecked
-                //savedTodos[index] = savedTodos[index].replace(/^[x]/, "")  "[x]" + savedTodos[index];
                 localStorage.setItem('todos', JSON.stringify(savedTodos))
             }
         }
